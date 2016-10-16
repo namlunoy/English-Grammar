@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Basic English Grammar</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="hello_world">Hello world!</string>
+    <!-- -
+        This is an ad unit ID for a banner test ad. Replace with your own banner ad unit id.
+        For more information, see https://support.google.com/admob/answer/3052638
+    <!- -->
+    <string name="banner_ad_unit_id">ca-app-pub-6921176146936171/4643463045</string>
+    <string name="billboard_ad_unit_id">ca-app-pub-6921176146936171/6120196244</string>
+    <string name="title_activity_ly_thuyet">LyThuyetActivity</string>
+    <string name="title_activity_kiem_tra">KiemTraActivity</string>
+</resources>
