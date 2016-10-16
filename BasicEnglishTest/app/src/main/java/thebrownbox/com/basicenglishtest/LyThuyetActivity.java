@@ -1,11 +1,16 @@
 package thebrownbox.com.basicenglishtest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.webkit.WebView;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class LyThuyetActivity extends AppCompatActivity {
 
@@ -20,10 +25,15 @@ public class LyThuyetActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                // Change to Testing
+                Intent kiemTra = new Intent(LyThuyetActivity.this, KiemTraActivity.class);
+                startActivity(kiemTra);
             }
         });
+
+
+        View content = findViewById(R.id.content);
+        WebView webView = (WebView)content.findViewById(R.id.webView);
     }
 
 }

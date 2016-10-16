@@ -3,17 +3,23 @@ package thebrownbox.com.basicenglishtest;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import controllers.ConfigCTL;
+import controllers.DBHelper;
+import controllers.DatabaseCTL;
+import utilities.SelectionType;
+
 public class MainActivity extends AppCompatActivity {
-    // Remove the below line after defining your own ad unit ID.
-    private static final String TOAST_TEXT = "Test ads are being shown. "
-            + "To show live ads, replace the ad unit ID in res/values/strings.xml with your own ad unit ID.";
+
 
     private Button btLyThuyet;
     private Button btKiemTra;
@@ -32,8 +38,32 @@ public class MainActivity extends AppCompatActivity {
                 .setRequestAgent("android_studio:ad_template").build();
         adView.loadAd(adRequest);
 
-        // Toasts the test ad message on the screen. Remove this after defining your own ad unit ID.
-        Toast.makeText(this, TOAST_TEXT, Toast.LENGTH_LONG).show();
+
+
+        btKiemTra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ConfigCTL.selectedChoice = SelectionType.KIEM_TRA;
+                Intent kiemTra = new Intent(MainActivity.this, ListLessonActivity.class);
+                startActivity(kiemTra);
+            }
+        });
+
+        btLyThuyet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ConfigCTL.selectedChoice = SelectionType.LY_THUYET;
+                Intent lyThuyet = new Intent(MainActivity.this, ListLessonActivity.class);
+                startActivity(lyThuyet);
+            }
+        });
+
+        if(!DBHelper.isDbExist(getApplicationContext())){
+          DBHelper.copyDatabase(getApplicationContext());
+        }
+
+        DatabaseCTL db = new DatabaseCTL(getApplicationContext());
+        db.F();
     }
 
 

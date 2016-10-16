@@ -37,7 +37,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".KiemTraActivity"
-            android:label="@string/title_activity_kiem_tra"></activity>
+            android:label="@string/title_activity_kiem_tra" />
+        <activity
+            android:name=".ListLessonActivity"
+            android:label="@string/title_activity_list_lesson"></activity>
     </application>
 
 </manifest>

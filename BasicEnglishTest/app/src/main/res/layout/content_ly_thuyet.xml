@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_ly_thuyet"
     android:layout_width="match_parent"
@@ -12,5 +13,14 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="thebrownbox.com.basicenglishtest.LyThuyetActivity"
     tools:showIn="@layout/activity_ly_thuyet">
+
+
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </WebView>
 
 </RelativeLayout>

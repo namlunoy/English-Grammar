@@ -12,4 +12,5 @@
     <string name="billboard_ad_unit_id">ca-app-pub-6921176146936171/6120196244</string>
     <string name="title_activity_ly_thuyet">LyThuyetActivity</string>
     <string name="title_activity_kiem_tra">KiemTraActivity</string>
+    <string name="title_activity_list_lesson">ListLessonActivity</string>
 </resources>
