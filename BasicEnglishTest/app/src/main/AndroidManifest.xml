@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="thebrownbox.com.basicenglishtest">
+    package="com.thebrownbox.basicenglishtest">
 
     <!-- Include required permissions for Google Mobile Ads to run. -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -19,7 +19,7 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.thebrownbox.basicenglishtest.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,14 +32,14 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
         <activity
-            android:name=".LyThuyetActivity"
+            android:name="com.thebrownbox.basicenglishtest.LyThuyetActivity"
             android:label="@string/title_activity_ly_thuyet"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".KiemTraActivity"
+            android:name="com.thebrownbox.basicenglishtest.KiemTraActivity"
             android:label="@string/title_activity_kiem_tra" />
         <activity
-            android:name=".ListLessonActivity"
+            android:name="com.thebrownbox.basicenglishtest.ListLessonActivity"
             android:label="@string/title_activity_list_lesson"></activity>
     </application>
 

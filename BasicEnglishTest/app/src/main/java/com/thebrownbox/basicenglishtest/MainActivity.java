@@ -1,17 +1,19 @@
-package thebrownbox.com.basicenglishtest;
+package com.thebrownbox.basicenglishtest;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
+import java.io.File;
+import java.io.IOException;
 
 import controllers.ConfigCTL;
 import controllers.DBHelper;
@@ -20,7 +22,7 @@ import utilities.SelectionType;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    public static boolean hasNetwork = false;
     private Button btLyThuyet;
     private Button btKiemTra;
 
@@ -28,16 +30,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        hasNetwork = ConfigCTL.IsHasInternet(getApplicationContext());
 
         btLyThuyet = (Button) findViewById(R.id.btLyThuyet);
         btKiemTra = (Button) findViewById(R.id.btKiemTra);
 
         // Load an ad into the AdMob banner view.
         AdView adView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .setRequestAgent("android_studio:ad_template").build();
-        adView.loadAd(adRequest);
-
+        if(hasNetwork) {
+            AdRequest adRequest = new AdRequest.Builder()
+                    .setRequestAgent("android_studio:ad_template").build();
+            adView.loadAd(adRequest);
+        }else{
+            adView.setVisibility(View.GONE);
+        }
 
 
         btKiemTra.setOnClickListener(new View.OnClickListener() {
@@ -58,12 +64,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         if(!DBHelper.isDbExist(getApplicationContext())){
           DBHelper.copyDatabase(getApplicationContext());
         }
 
-        DatabaseCTL db = new DatabaseCTL(getApplicationContext());
-        db.F();
+        DatabaseCTL.create(getApplicationContext());
     }
 
 

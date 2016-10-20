@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="thebrownbox.com.basicenglishtest.MainActivity">
+    tools:context="com.thebrownbox.basicenglishtest.MainActivity">
 
     <!-- view for AdMob Banner Ad -->
     <com.google.android.gms.ads.AdView

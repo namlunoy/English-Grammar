@@ -1,4 +1,4 @@
-package thebrownbox.com.basicenglishtest;
+package com.thebrownbox.basicenglishtest;
 
 import org.junit.Test;
 

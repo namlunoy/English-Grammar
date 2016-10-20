@@ -1,14 +1,21 @@
-package thebrownbox.com.basicenglishtest;
+package com.thebrownbox.basicenglishtest;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import controllers.ConfigCTL;
+import controllers.DatabaseCTL;
+import models.Lesson;
 
 public class ListLessonActivity extends AppCompatActivity {
 
@@ -17,7 +24,7 @@ public class ListLessonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_lesson);
-
+        setTitle("Chủ đề");
         // Load an ad into the AdMob banner view.
         AdView adView = (AdView) findViewById(R.id.adView_lesson);
         AdRequest adRequest = new AdRequest.Builder()
@@ -25,6 +32,28 @@ public class ListLessonActivity extends AppCompatActivity {
         adView.loadAd(adRequest);
 
         listView = (ListView) findViewById(R.id.listViewLesson);
+        if(ConfigCTL.listLesson == null)
+            ConfigCTL.listLesson = DatabaseCTL.Instance().getAllLessons();
+
+        listView.setAdapter(new ArrayAdapter<Lesson>(getApplicationContext(),android.R.layout.simple_list_item_1,android.R.id.text1, ConfigCTL.listLesson));
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent;
+                ConfigCTL.selectedLesson = ConfigCTL.listLesson.get(position);
+                switch (ConfigCTL.selectedChoice){
+                    case LY_THUYET:
+                        intent = new Intent(ListLessonActivity.this,LyThuyetActivity.class);
+                        startActivity(intent);
+                        break;
+                    case  KIEM_TRA:
+                        intent = new Intent(ListLessonActivity.this,KiemTraActivity.class);
+                        startActivity(intent);
+                        break;
+                };
+            }
+        });
     }
 
 
