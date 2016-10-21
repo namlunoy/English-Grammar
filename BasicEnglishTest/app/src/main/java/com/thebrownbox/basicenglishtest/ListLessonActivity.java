@@ -27,9 +27,13 @@ public class ListLessonActivity extends AppCompatActivity {
         setTitle("Chủ đề");
         // Load an ad into the AdMob banner view.
         AdView adView = (AdView) findViewById(R.id.adView_lesson);
-        AdRequest adRequest = new AdRequest.Builder()
-                .setRequestAgent("android_studio:ad_template").build();
-        adView.loadAd(adRequest);
+       if(MainActivity.hasNetwork){
+           AdRequest adRequest = new AdRequest.Builder()
+                   .setRequestAgent("android_studio:ad_template").build();
+           adView.loadAd(adRequest);
+       }else{
+           adView.setVisibility(View.GONE);
+       }
 
         listView = (ListView) findViewById(R.id.listViewLesson);
         if(ConfigCTL.listLesson == null)

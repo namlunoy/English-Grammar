@@ -8,6 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import controllers.ConfigCTL;
 import controllers.DatabaseCTL;
 
@@ -19,7 +22,6 @@ public class LyThuyetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ly_thuyet);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,6 +31,15 @@ public class LyThuyetActivity extends AppCompatActivity {
                 startActivity(kiemTra);
             }
         });
+
+        AdView adView = (AdView) findViewById(R.id.adView_LT);
+        if(MainActivity.hasNetwork) {
+            AdRequest adRequest = new AdRequest.Builder()
+                    .setRequestAgent("android_studio:ad_template").build();
+            adView.loadAd(adRequest);
+        }else{
+            adView.setVisibility(View.GONE);
+        }
 
 
         View content = findViewById(R.id.content);

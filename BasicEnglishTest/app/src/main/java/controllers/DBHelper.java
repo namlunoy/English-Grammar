@@ -16,9 +16,20 @@ import java.io.OutputStream;
 
 public class DBHelper {
 
+    public static String getDBDir(Context context)
+    {
+        return context.getDatabasePath(ConfigCTL.FILE_NAME).getAbsolutePath();
+    }
+
+
+    public static String getDBPath(Context context)
+    {
+        return context.getDatabasePath(ConfigCTL.FILE_NAME).getParent();
+    }
+
     public static boolean isDbExist(Context context){
         // +"/files/"+ConfigCTL.FILE_NAME;
-        File dbFile = context.getDatabasePath(ConfigCTL.FILE_NAME);
+        File dbFile = new File(getDBPath(context));
 
         if(dbFile.exists()){
             Log.d("XXX","Exist!");
@@ -34,6 +45,7 @@ public class DBHelper {
         try {
             InputStream inputStream = context.getAssets().open(ConfigCTL.FILE_NAME);
             File dbFile = context.getDatabasePath(ConfigCTL.FILE_NAME);
+            dbFile.getParentFile().mkdir();
             dbFile.createNewFile();
             OutputStream fileOutput = new FileOutputStream(dbFile);
 
@@ -49,7 +61,6 @@ public class DBHelper {
             e.printStackTrace();
             return false;
         }
-
         return true;
     }
 }

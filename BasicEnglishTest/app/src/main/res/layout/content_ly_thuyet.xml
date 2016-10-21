@@ -12,9 +12,19 @@
     tools:showIn="@layout/activity_ly_thuyet">
 
 
+    <!-- view for AdMob Banner Ad -->
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView_LT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id" />
 
     <WebView
         android:id="@+id/webView"
+        android:layout_below="@+id/adView_LT"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

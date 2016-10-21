@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         btKiemTra = (Button) findViewById(R.id.btKiemTra);
 
         // Load an ad into the AdMob banner view.
-        AdView adView = (AdView) findViewById(R.id.adView);
+        AdView adView = (AdView) findViewById(R.id.adViewMain);
         if(hasNetwork) {
             AdRequest adRequest = new AdRequest.Builder()
                     .setRequestAgent("android_studio:ad_template").build();

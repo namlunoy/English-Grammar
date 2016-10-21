@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +20,7 @@ import controllers.ConfigCTL;
 import controllers.DatabaseCTL;
 import models.Question;
 
-public class KiemTraActivity extends FragmentActivity {
+public class KiemTraActivity extends ActionBarActivity {
 
     private ArrayList<Question> questions;
     private ViewPager viewPager;
@@ -31,7 +32,6 @@ public class KiemTraActivity extends FragmentActivity {
         setContentView(R.layout.activity_kiem_tra);
         setTitle("Test: "+ ConfigCTL.selectedLesson.getTitle());
         showAds();
-
         questions = DatabaseCTL.Instance().getAllQuestions(ConfigCTL.selectedLesson.getId());
 
         viewPager = (ViewPager)findViewById(R.id.viewPager);
